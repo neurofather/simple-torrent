@@ -19,4 +19,4 @@ RUN go build -ldflags "-s -w -X main.VERSION=$(git describe --tags)" -o /usr/loc
 FROM alpine
 COPY --from=builder /usr/local/bin/cloud-torrent /usr/local/bin/cloud-torrent
 RUN apk update && apk add ca-certificates
-ENTRYPOINT ["cloud-torrent"]
+ENTRYPOINT cloud-torrent -p $PORT
